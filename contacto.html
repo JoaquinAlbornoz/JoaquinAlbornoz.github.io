@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorian Studio-Contacto</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
@@ -12,7 +13,7 @@
     <div class="conteiner-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom fixed-top"style="margin-bottom: 20px;">
             <a href="./index.html#inicio" class="navbar-brand">
-              <img src="./Imagenes/studio sorian.png" alt="Sorian Studio" class="logo">
+              <img src="./Imagenes/studio_sorian-transformed.png" alt="Sorian Studio" class="logo">
             </a>
             <button class="navbar-toggler ml-auto" type="button" style="border-radius: 0; border: 0 solid transparent;justify-self: end;" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -28,12 +29,7 @@
             </div>
         </nav>
     </div>
-    <div class="conteiner-fluid d-none d-sm-none d-md-block" id="contacto" style="margin-left: 1rem;margin-right: 1rem; padding-top: 120px;">
-      <div class="row">
-            <img src="./Imagenes/CONTACTO.png" alt="contacto" class="img-fluid" style="margin: 2rem 0;">
-        </div>
-    </div>
-    <div class="conteiner-fluid text-center">
+    <div class="conteiner-fluid text-center" style="padding-top: 82px;">
         <div class="row d-flex justify-content-center" style="margin-left: 1rem;margin-right: 1rem;">
             <div class="col aling-self-center"style="margin-top: 1rem;margin-bottom: 3rem;padding-top: 20px;margin-left: 1rem;margin-right: 1rem;">
                 <h1 class="Titulo1">CONTACTO</h1>
@@ -65,6 +61,26 @@
         </div>
 
     </div>
+    <div id="map"></div>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      var latitude = -31.540690342227926; // Latitud de la ubicación deseada
+      var longitude = -68.57665879388445; // Longitud de la ubicación deseada
+      var zoomLevel = 16; // Nivel de zoom deseado
+
+      // Crea una instancia del mapa y establece la ubicación y el zoom
+      var map = L.map('map').setView([latitude, longitude], zoomLevel);
+    
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        maxZoom: 18
+      }).addTo(map);
+    
+      map.getContainer().classList.add('grayscale');
+      var marker = L.marker([latitude, longitude]).addTo(map);
+      marker.bindPopup('Sorian Studio').openPopup();
+    </script>
+    
     <!--Footer-->
     <footer class="d-flex flex-wrap justify-content-between align-items-center border-top" style="background-color: black; margin-top: 1.5rem;">
       <div class="col-md-4 d-flex align-items-center">
